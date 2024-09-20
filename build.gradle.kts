@@ -1,6 +1,9 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
     id("java")
     id("com.diffplug.spotless") version "7.0.0.BETA2"
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 group = "com.erabsolute.discord.bots"
@@ -44,4 +47,8 @@ tasks.withType<Jar> {
     manifest {
         attributes["Main-Class"] = mainClassName
     }
+}
+
+tasks.withType<ShadowJar> {
+    archiveFileName.set("devGPT-$version.jar")
 }
